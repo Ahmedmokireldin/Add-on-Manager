@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add-on Manager</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .addon-manager {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .addon-item {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: box-shadow 0.3s ease;
+        }
+        .addon-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+        .serial-number {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .encrypted, .decrypted {
+            font-family: monospace;
+            background-color: #e8f0fe;
+            padding: 5px 10px;
+            border-radius: 4px;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .price {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="addon-manager">
+        <h2>Add-on Manager</h2>
+        
+        <div class="addon-item">
+            <h3>Re-design Dashboard XeroChat</h3>
+            <div class="serial-number">
+                <span class="encrypted">••••••••-••••••••-••••••••-••••••••</span>
+                <span class="decrypted hidden">2E2C95DA-883D5BA2-2856605E-DDBB6BE8</span>
+                <div class="tooltip">
+                    <button class="toggle-visibility">👁️</button>
+                    <span class="tooltiptext">Toggle Visibility</span>
+                </div>
+                <div class="tooltip">
+                    <button class="copy-serial">📋</button>
+                    <span class="tooltiptext">Copy Serial</span>
+                </div>
+                <div class="tooltip">
+                    <button class="restart">🔄</button>
+                    <span class="tooltiptext">Restart Add-on</span>
+                </div>
+            </div>
+            <p>Price: <span class="price">\$200.00</span></p>
+        </div>
+
+        <div class="addon-item">
+            <h3>Instagram Accounts Statistics</h3>
+            <div class="serial-number">
+                <span class="encrypted">••••••••-••••••••-••••••••-••••••••</span>
+                <span class="decrypted hidden">BA193B9C-5E9AA0DF-8E714BFE-1A1B4048</span>
+                <div class="tooltip">
+                    <button class="toggle-visibility">👁️</button>
+                    <span class="tooltiptext">Toggle Visibility</span>
+                </div>
+                <div class="tooltip">
+                    <button class="copy-serial">📋</button>
+                    <span class="tooltiptext">Copy Serial</span>
+                </div>
+                <div class="tooltip">
+                    <button class="restart">🔄</button>
+                    <span class="tooltiptext">Restart Add-on</span>
+                </div>
+            </div>
+            <p>Price: <span class="price">\$120.00</span></p>
+        </div>
+
+        <div class="addon-item">
+            <h3>To Do List / Kanban</h3>
+            <div class="serial-number">
+                <span class="encrypted">••••••••-••••••••-••••••••-••••••••</span>
+                <span class="decrypted hidden">B16CE0C1-19DEFBEA-97374888-B14EB2DB</span>
+                <div class="tooltip">
+                    <button class="toggle-visibility">👁️</button>
+                    <span class="tooltiptext">Toggle Visibility</span>
+                </div>
+                <div class="tooltip">
+                    <button class="copy-serial">📋</button>
+                    <span class="tooltiptext">Copy Serial</span>
+                </div>
+                <div class="tooltip">
+                    <button class="restart">🔄</button>
+                    <span class="tooltiptext">Restart Add-on</span>
+                </div>
+            </div>
+            <p>Price: <span class="price">\$29.00</span></p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.toggle-visibility').forEach(button => {
+            button.addEventListener('click', function() {
+                const parent = this.closest('.serial-number');
+                parent.querySelector('.encrypted').classList.toggle('hidden');
+                parent.querySelector('.decrypted').classList.toggle('hidden');
+            });
+        });
+
+        document.querySelectorAll('.copy-serial').forEach(button => {
+            button.addEventListener('click', function() {
+                const serial = this.closest('.serial-number').querySelector('.decrypted').textContent;
+                navigator.clipboard.writeText(serial);
+                alert('Serial number copied to clipboard!');
+            });
+        });
+
+        document.querySelectorAll('.restart').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Restarting add-on...');
+                // Add actual restart logic here
+            });
+        });
+    </script>
+</body>
+</html>
